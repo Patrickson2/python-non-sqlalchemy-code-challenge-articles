@@ -144,7 +144,13 @@ class Magazine:
         return result
 
     def contributors(self):
-        pass
+        # Return unique authors who wrote for this magazine
+        authors = [article.author for article in self.articles()]
+        unique_authors = []
+        for author in authors:
+            if author not in unique_authors:
+                unique_authors.append(author)
+        return unique_authors
 
     def article_titles(self):
         pass

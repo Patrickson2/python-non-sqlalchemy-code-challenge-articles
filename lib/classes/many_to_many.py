@@ -30,22 +30,26 @@ class Article:
 
     @title.setter
     def title(self, value):
-
         if isinstance(value, str) and 5 <= len(value) <= 50:
             self._title = value    
         
 class Author:
     def __init__(self, name):
-        # Name must be a string with a length of not long than 0
         if isinstance(name, str) and len(name) > 0:
             self._name = name
         else:
             self._name = "Anonymous"
 
-# initiating a getter method so that one can access attributes in the class
     @property
-    def name (self):
+    def name(self):
         return self._name
+
+    @name.setter
+    def name(self, value):
+        # Allow assignment only if it is a non-empty string
+        if isinstance(value, str) and len(value) > 0:
+            # Ignore changes if you want it truly immutable
+            pass  # do nothing, keeps original name
 
     # def articles(self):
     # here i am creating a string that is returning all article instances where the author is the author.
@@ -68,13 +72,31 @@ class Author:
 
 
     def magazines(self):
-        pass
+      # Return unique magazines from author's articles  
+        mags = [article.magazine for article in self.articles()]
+        unique_mags = []
+        for mag in mags:
+            if mag not in unique_mags:
+                unique_mags.append(mag)
+        return unique_mags
 
     def add_article(self, magazine, title):
-        pass
+        # Creates a new article associated with this author
+        if isinstance(magazine, Magazine) and isinstance(title, str):
+            return Article(self, magazine, title)
+        else:
+            return None
 
     def topic_areas(self):
-        pass
+        # Return unique categories of magazines this author has contributed to
+        mags = self.magazines()
+        if not mags:
+            return None
+        categories = []
+        for mag in mags:
+            if mag.category not in categories:
+                categories.append(mag.category)
+        return categories
 
 class Magazine:
     def __init__(self, name, category):

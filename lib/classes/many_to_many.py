@@ -114,6 +114,10 @@ class Magazine:
         else:
             self._category = "General"
 
+    # if sth is to be added to the list --implement the .append formart.
+        Magazine.all.append(self)
+
+
     def articles(self):
         pass
 

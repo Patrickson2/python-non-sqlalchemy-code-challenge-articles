@@ -42,6 +42,11 @@ class Author:
         else:
             self._name = "Anonymous"
 
+# initiating a getter method so that one can access attributes in the class
+    @property
+    def name (self):
+        return self._name
+
     def articles(self):
         pass
 

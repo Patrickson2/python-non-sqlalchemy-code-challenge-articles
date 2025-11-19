@@ -47,8 +47,25 @@ class Author:
     def name (self):
         return self._name
 
+    # def articles(self):
+    # here i am creating a string that is returning all article instances where the author is the author.
+    # by doinging this i am coming up with a list comprehension (like shortening it)
+        # return[article for article in Article.all if article.author == self]
+     # the Article.all assumes that there is a list in the Article 
+    # then the if article.author == self checks if the author of the article is the same as the {self} author
+
     def articles(self):
-        pass
+     # create an empty list to store matching articles
+        result = []
+        for article in Article.all:
+        # go through every article
+            if article.author == self:
+            # check if this article was written by this author
+                result.append(article)  
+              # add it to the result list
+        return result  
+        # return the list of articles
+
 
     def magazines(self):
         pass

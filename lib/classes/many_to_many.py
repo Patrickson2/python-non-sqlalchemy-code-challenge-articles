@@ -134,9 +134,14 @@ class Magazine:
     def category(self, value):
         if isinstance(value, str) and len(value) > 0:
             self._category = value
-                        
+
     def articles(self):
-        pass
+        # Return all articles written for this magazine
+        result = []
+        for article in Article.all:
+            if article.magazine == self:
+                result.append(article)
+        return result
 
     def contributors(self):
         pass

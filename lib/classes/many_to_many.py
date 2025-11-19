@@ -160,4 +160,16 @@ class Magazine:
         return [article.title for article in arts]
 
     def contributing_authors(self):
-        pass
+        # Return authors who wrote more than 2 articles for this magazine
+        arts = self.articles()
+        if not arts:
+            return None
+        counts = {}
+        for article in arts:
+            author = article.author
+            if author not in counts:
+                counts[author] = 1
+            else:
+                counts[author] += 1
+        top_authors = [author for author, count in counts.items() if count > 2]
+        return top_authors if top_authors else None

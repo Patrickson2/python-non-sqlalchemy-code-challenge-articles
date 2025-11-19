@@ -108,7 +108,11 @@ class Magazine:
             self._name = name
         else:
             self._name = "Magazine"
-        self.category = category
+    # Validate category
+        if isinstance(category, str) and len(category) > 0:
+            self._category = category
+        else:
+            self._category = "General"
 
     def articles(self):
         pass

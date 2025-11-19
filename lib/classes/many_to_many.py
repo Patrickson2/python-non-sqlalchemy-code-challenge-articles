@@ -98,9 +98,16 @@ class Author:
                 categories.append(mag.category)
         return categories
 
+# i want to do same thing i did with artcle but with a touch of diff 
 class Magazine:
+    all = []
+        # i want to check if the magazine do exist
     def __init__(self, name, category):
-        self.name = name
+        # now validating the existance of the name match in the magazine
+        if isinstance(name, str) and 2 <= len(name) <= 16:
+            self._name = name
+        else:
+            self._name = "Magazine"
         self.category = category
 
     def articles(self):

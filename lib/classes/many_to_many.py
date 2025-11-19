@@ -153,7 +153,11 @@ class Magazine:
         return unique_authors
 
     def article_titles(self):
-        pass
+        # Return titles of articles in this magazine
+        arts = self.articles()
+        if not arts:
+            return None
+        return [article.title for article in arts]
 
     def contributing_authors(self):
         pass

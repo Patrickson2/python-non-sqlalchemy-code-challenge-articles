@@ -117,7 +117,15 @@ class Magazine:
     # if sth is to be added to the list --implement the .append formart.
         Magazine.all.append(self)
 
+    @property
+    def name(self):
+        return self._name
 
+    @name.setter
+    def name(self, value):
+        if isinstance(value, str) and 2 <= len(value) <= 16:
+            self._name = value
+                
     def articles(self):
         pass
 

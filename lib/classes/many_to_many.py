@@ -39,6 +39,8 @@ class Author:
         # Name must be a string with a length of not long than 0
         if isinstance(name, str) and len(name) > 0:
             self._name = name
+        else:
+            self._name = "Anonymous"
 
     def articles(self):
         pass

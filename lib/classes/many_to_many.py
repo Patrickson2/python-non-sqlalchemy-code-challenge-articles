@@ -22,12 +22,16 @@ class Article:
     # Wanting to add an article to the list --implement the .append formart.
         Article.all.append(self)
         
-    # adding of the property 
+    # adding of the property to checks over the specific attr which is the tittle 
+    # use the logic of a construction like you the boss then assigning a foreman(checks the ongoing of everything)
     @property
     def title(self):
         # Title is immutable
         return self._title
 
+
+    # then this is where the approval takes place, approves if the tittle matches the value being placed or entered
+    # lets say the foreman can approve if the work was done well or not
     @title.setter
     def title(self, value):
         if isinstance(value, str) and 5 <= len(value) <= 50:
